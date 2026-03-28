@@ -103,4 +103,8 @@ export const references = [
     title: "Milli Uzay Programı Hedefleri",
     url: "https://tua.gov.tr/tr/milli-uzay-programi/milli-uzay-programi",
   },
+  {
+    title: "AYAP - Ay Araştırma Programı Projesi",
+    url: "https://turkiyeyuzyili.com/proje-ay-arastirma-programi-projesi-ayap",
+  },
 ];
