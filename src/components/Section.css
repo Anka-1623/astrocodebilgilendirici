@@ -1,0 +1,142 @@
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section__title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.section__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #7b68ee, #a855f7);
+  border-radius: 2px;
+}
+
+.section__items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section__card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  animation: fadeUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.section--visible .section__card {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.section__card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(123, 104, 238, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(123, 104, 238, 0.1);
+}
+
+.section__subtitle {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #a855f7;
+  margin-bottom: 1rem;
+}
+
+.section__text {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+.section__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section__bullet {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+.section__bullet-icon {
+  color: #7b68ee;
+  font-size: 0.6rem;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .section__title {
+    font-size: 1.5rem;
+  }
+
+  .section__card {
+    padding: 1.5rem;
+  }
+
+  .section__subtitle {
+    font-size: 1.1rem;
+  }
+
+  .section__text,
+  .section__bullet {
+    font-size: 0.85rem;
+  }
+}
