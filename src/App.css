@@ -16,9 +16,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 12vh;
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   animation: heroFade 1.2s ease-out;
 }
 
@@ -58,7 +60,34 @@
   max-width: 480px;
   line-height: 1.7;
   font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(123, 104, 238, 0.3), rgba(168, 85, 247, 0.3));
+  border: 1px solid rgba(123, 104, 238, 0.4);
+  padding: 0.75rem 1.8rem;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
   margin-bottom: 3rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero__btn:hover {
+  background: linear-gradient(135deg, rgba(123, 104, 238, 0.5), rgba(168, 85, 247, 0.5));
+  border-color: rgba(123, 104, 238, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(123, 104, 238, 0.25);
 }
 
 .hero__scroll {
