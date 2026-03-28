@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react";
-import { sections } from "../data/content";
+import { sections, ui } from "../data/content";
+import { useLanguage } from "../context/LanguageContext";
 import "./Header.css";
 
 export default function Header() {
+  const { lang, toggleLang } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+
+  const currentSections = sections[lang];
+  const t = ui[lang];
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const offsets = sections.map((s) => {
+      const offsets = currentSections.map((s) => {
         const el = document.getElementById(s.id);
         return el ? { id: s.id, top: el.offsetTop - 100 } : null;
       }).filter(Boolean);
@@ -26,7 +31,7 @@ export default function Header() {
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [currentSections]);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -45,24 +50,34 @@ export default function Header() {
         </div>
 
         <nav className={`header__nav ${menuOpen ? "header__nav--open" : ""}`}>
-          {sections.map((s) => (
+          {currentSections.map((s) => (
             <button
               key={s.id}
               className={`header__link ${activeSection === s.id ? "header__link--active" : ""}`}
               onClick={() => scrollTo(s.id)}
             >
-              {s.title.split("(")[0].trim()}
+              {s.navLabel}
             </button>
           ))}
+
+          <button className="header__lang" onClick={toggleLang}>
+            {lang === "tr" ? "EN" : "TR"}
+          </button>
         </nav>
 
-        <button
-          className={`header__burger ${menuOpen ? "header__burger--open" : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menü"
-        >
-          <span /><span /><span />
-        </button>
+        <div className="header__actions">
+          <button className="header__lang header__lang--mobile" onClick={toggleLang}>
+            {lang === "tr" ? "EN" : "TR"}
+          </button>
+
+          <button
+            className={`header__burger ${menuOpen ? "header__burger--open" : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={t.menuAria}
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </div>
     </header>
   );
