@@ -17,7 +17,7 @@ export default function AppContent() {
         </h1>
         <p className="hero__desc">{t.heroDesc}</p>
         <a
-          href="https://astrocode-lovat.vercel.app/"
+          href="https://astrocode-nine.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="hero__btn"
